@@ -51,6 +51,7 @@ class Cliente
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(1, $this->ID_CLIE);
         $stmt->execute();
+
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
         $this->ID_USU = $row["ID_USU"];
