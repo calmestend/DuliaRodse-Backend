@@ -75,6 +75,27 @@
         return false;
 	}
 
+	public function update()
+	{
+        $query = "UPDATE REVIEW SET ID_ESC= ?, COM_REV= ?  WHERE ID_REV= ?";
+
+        $this->ID_ESC = htmlspecialchars(strip_tags($this->ID_ESC));
+        $this->COM_REV = htmlspecialchars(strip_tags($this->COM_REV));
+        $this->ID_REV = htmlspecialchars(strip_tags($this->ID_REV));
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(1, $this->ID_ESC);
+        $stmt->bindParam(2, $this->COM_REV);
+        $stmt->bindParam(3, $this->ID_REV);
+
+        if ($stmt->execute()) {
+            return true;
+        }
+
+        return false;
+	
+	}
+
 }
 ?>
 
