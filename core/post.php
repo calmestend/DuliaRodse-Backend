@@ -10,3 +10,4 @@ include_once "Venta.php";
 include_once "Venta_Inventario.php";
 include_once "Pago.php";
 include_once "Review.php";
+include_once "Factura.php";
