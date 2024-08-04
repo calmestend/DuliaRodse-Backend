@@ -17,7 +17,6 @@ if ($num > 0) {
 	while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
 		extract($row);
 		$post_item = [
-			"ID_CLIE" => $CVE_VENTA,
 			"ID_CLIE" => $ID_CLIE,
 			"NI_CLIE" => $NI_CLIE,
 			"AP_CLIE" => $AP_CLIE,
