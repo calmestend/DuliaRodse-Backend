@@ -7,6 +7,10 @@ include_once "../../core/initialize.php";
 
 $post = new Factura($db);
 
+$data = json_decode(file_get_contents("php://input"));
+
+$post->CVE_VENTA = $data->CVE_VENTA;
+
 $result = $post->search_by_cve_venta();
 $num = $result->rowCount();
 
@@ -27,6 +31,7 @@ if ($num > 0) {
 			"NOEXT_CLIE" => $NOEXT_CLIE,
 			"CP_CLIE" => $CP_CLIE,
 			"EMAIL_CLIE" => $EMAIL_CLIE,
+			"RFC_CLIE" => $RFC_CLIE,
 			"NOM_CIUDAD" => $NOM_CIUDAD,
 			"NOM_ESTADO" => $NOM_ESTADO,
 			"CVE_VENTA" => $CVE_VENTA,

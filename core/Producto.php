@@ -143,6 +143,22 @@ class Producto
         return false;
     }
 
+    public function enable()
+    {
+        $query = "UPDATE PRODUCTO SET ACTIVO= 1 WHERE ID_PRO = ? ";
+
+        $this->ID_PRO = htmlspecialchars(strip_tags($this->ID_PRO));
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(1, $this->ID_PRO);
+
+        if ($stmt->execute()) {
+            return true;
+        }
+
+        return false;
+    }
+
+
     public function delete()
     {
         $query = "UPDATE PRODUCTO SET ACTIVO= 0 WHERE ID_PRO = ? ";
@@ -190,4 +206,45 @@ class Producto
 
         return false;
     }
+
+	public function update_into_inventory()
+	{
+        $query =
+            "UPDATE INVENTARIO SET EXIST_INV= ? WHERE NO_INV= ?";
+
+        $this->EXIST_INV = htmlspecialchars(strip_tags($this->EXIST_INV));
+        $this->NO_INV = htmlspecialchars(strip_tags($this->NO_INV));
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(1, $this->EXIST_INV);
+        $stmt->bindParam(2, $this->NO_INV);
+
+        if ($stmt->execute()) {
+            return true;
+        }
+
+        return false;
+				
+	}
+
+	public function create_into_inventory()
+	{
+        $query =
+            "INSERT INTO INVENTARIO (EXIST_INV, NO_SUC, ID_PRO) VALUES (?, ?, ?)";
+
+        $this->EXIST_INV = htmlspecialchars(strip_tags($this->EXIST_INV));
+        $this->NO_SUC = htmlspecialchars(strip_tags($this->NO_SUC));
+        $this->ID_PRO = htmlspecialchars(strip_tags($this->ID_PRO));
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(1, $this->EXIST_INV);
+        $stmt->bindParam(2, $this->NO_SUC);
+        $stmt->bindParam(3, $this->ID_PRO);
+
+        if ($stmt->execute()) {
+            return true;
+        }
+
+        return false;
+	}
 }

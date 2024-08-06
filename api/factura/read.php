@@ -28,6 +28,7 @@ if ($num > 0) {
 			"NOEXT_CLIE" => $NOEXT_CLIE,
 			"CP_CLIE" => $CP_CLIE,
 			"EMAIL_CLIE" => $EMAIL_CLIE,
+			"RFC_CLIE" => $RFC_CLIE,
 			"NOM_CIUDAD" => $NOM_CIUDAD,
 			"NOM_ESTADO" => $NOM_ESTADO,
 			"CVE_VENTA" => $CVE_VENTA,

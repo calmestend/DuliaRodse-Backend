@@ -7,7 +7,7 @@ include_once "../../core/initialize.php";
 
 $post = new Sucursal($db);
 
-$result = $post->read_with_direction();
+$result = $post->read();
 $num = $result->rowCount();
 
 if ($num > 0) {
@@ -23,8 +23,7 @@ if ($num > 0) {
 			"NOINT_SUC" => $NOINT_SUC,
 			"NOEXT_SUC" => $NOEXT_SUC,
 			"CP_SUC" => $CP_SUC,
-			"NOM_CIUDAD" => $NOM_CIUDAD,
-			"NOM_ESTADO" => $NOM_ESTADO,
+			"CVE_CIUDAD" => $CVE_CIUDAD,
 			"ACTIVO" => $ACTIVO,
         ];
 
@@ -37,3 +36,4 @@ if ($num > 0) {
 }
 
 ?>
+

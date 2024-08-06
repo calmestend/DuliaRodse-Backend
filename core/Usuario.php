@@ -62,6 +62,22 @@ class Usuario
         return false;
     }
 
+    public function changeToClient()
+    {
+        $query = "UPDATE USUARIO SET TIPO_USU= 2 WHERE ID_USU= ?";
+
+        $this->ID_USU = htmlspecialchars(strip_tags($this->ID_USU));
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(1, $this->ID_USU);
+
+        if ($stmt->execute()) {
+            return true;
+        }
+
+        return false;
+    }
+
     public function changeToAdmin()
     {
         $query = "UPDATE USUARIO SET TIPO_USU= 1 WHERE ID_USU= ?";
